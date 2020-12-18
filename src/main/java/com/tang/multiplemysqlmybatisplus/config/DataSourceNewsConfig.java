@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -26,7 +25,6 @@ public class DataSourceNewsConfig {
   }
 
   @Bean(name = "newsSqlSessionFactory")
-  @Primary
   public SqlSessionFactory newsSqlSessionFactory(@Qualifier("newsDataSource") DataSource dataSource) throws Exception {
     //SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
     MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
@@ -37,7 +35,6 @@ public class DataSourceNewsConfig {
   }
 
   @Bean(name = "newsSqlSessionTemplate")
-  @Primary
   public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("newsSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
     return new SqlSessionTemplate(sqlSessionFactory);
   }

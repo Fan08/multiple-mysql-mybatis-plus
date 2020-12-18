@@ -26,6 +26,7 @@ public class DataSourceOldConfig {
   }
 
   @Bean(name = "oldSqlSessionFactory")
+  @Primary
   public SqlSessionFactory oldSqlSessionFactory(@Qualifier("oldDataSource") DataSource dataSource) throws Exception {
     //SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
     MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
@@ -36,6 +37,7 @@ public class DataSourceOldConfig {
   }
 
   @Bean(name = "oldSqlSessionTemplate")
+  @Primary
   public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("oldSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
     return new SqlSessionTemplate(sqlSessionFactory);
   }

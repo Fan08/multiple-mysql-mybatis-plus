@@ -21,7 +21,7 @@ class MultipleMysqlMybatisplusApplicationTests {
   private BlogMapper blogMapper;
 
   @Test
-  void contextLoads() {
+  void testNewsUser() {
     List<User> users = userMapper.selectByMap(null);
     for (User user : users) {
       System.out.println(user.toString());
@@ -29,7 +29,7 @@ class MultipleMysqlMybatisplusApplicationTests {
   }
 
   @Test
-  void testNewsUser() {
+  void testOldBlog() {
     List<Blog> blogs = blogMapper.selectByMap(null);
     for (Blog blog : blogs) {
       System.out.println(blog.toString());
